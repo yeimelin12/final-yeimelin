@@ -1,0 +1,56 @@
+﻿@model MediPlus.Models.Cita
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles del Registro</h1>
+
+
+<div>
+    <h4>Cita</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Motivo Consulta:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MotivoDeConsulta)
+        </dd>
+        <dt class="col-sm-2">
+            Fecha:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaCita)
+        </dd>
+        <dt class="col-sm-2">
+            Comentario:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+        <dt class="col-sm-2">
+            Estado:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt class="col-sm-2">
+            Medico:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdMedicoNavigation.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            Paciente:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdPacientesNavigation.Nombres)
+        </dd>
+    </dl>
+
+</div>
+<div>
+    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Volver a la lista</a>
+</div>

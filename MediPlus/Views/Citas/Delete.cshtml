@@ -1,0 +1,57 @@
+﻿@model MediPlus.Models.Cita
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Registro</h1>
+
+<h3>Seguro que desea eliminar el registro?</h3>
+<div>
+    <h4>Cita</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Motivo Consulta: 
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MotivoDeConsulta)
+        </dd>
+        <dt class = "col-sm-2">
+            Fecha:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaCita)
+        </dd>
+        <dt class = "col-sm-2">
+            Comentario:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+        <dt class = "col-sm-2">
+            Estado:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt class = "col-sm-2">
+            Medico: 
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdMedicoNavigation.Nombre)
+        </dd class>
+        <dt class = "col-sm-2">
+            Paciente:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdPacientesNavigation.Nombres)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

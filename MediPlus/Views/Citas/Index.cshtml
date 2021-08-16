@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MediPlus.Models.Cita>
+
+@{
+    ViewData["Title"] = "Citas Medicas";
+}
+
+<h1>Listado de Todas las Citas</h1>
+
+<p>
+    @if (MediPlus.LocalData.LocalData.Usuario.Rol.Nombre != "Paciente")
+    {
+        <a asp-action="Create">Registrar cita</a>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Motivo de Consulta 
+            </th>
+            <th>
+                Fecha de Consulta 
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                Doctor
+            </th>
+            <th>
+                Paciente
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotivoDeConsulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCita)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMedicoNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPacientesNavigation.Nombres)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a> |
+                <a class="btn btn-sm btn-warning" asp-action="Cancelar" asp-route-id="@item.Id">Cancelar</a> 
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

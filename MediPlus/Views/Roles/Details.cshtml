@@ -1,0 +1,25 @@
+﻿@model MediPlus.Models.Role
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles del Registro</h1>
+
+
+<div>
+    <h4>Role</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>  |
+    <a asp-action="Index">Volver a la lista</a>
+</div>

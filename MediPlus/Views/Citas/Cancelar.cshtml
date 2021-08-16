@@ -1,0 +1,59 @@
+﻿@model MediPlus.Models.Cita
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Cancelación de Cita Medica</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Cancelar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label class="control-label">Paciente</label>
+                <select readonly asp-for="IdPacientes" class="form-control" asp-items="ViewBag.IdPacientes"></select>
+                <span asp-validation-for="IdPacientes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Medico:</label>
+                <select readonly asp-for="IdMedico" class="form-control" asp-items="ViewBag.IdMedico"></select>
+                <span asp-validation-for="IdMedico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Motivo de Consulta</label>
+                <input readonly asp-for="MotivoDeConsulta" class="form-control" />
+                <span asp-validation-for="MotivoDeConsulta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Fecha de Cita</label>
+                <input readonly asp-for="FechaCita" class="form-control" />
+                <span asp-validation-for="FechaCita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comentario" class="control-label"></label>
+                <input  asp-for="Comentario" class="form-control" />
+                <span asp-validation-for="Comentario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input readonly asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cancelar" class="btn btn-warning" />
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,211 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Medico")
+{
+    <div class="text-center">
+        <h1 class="display-4">Bienvenido/a @MediPlus.LocalData.LocalData.Usuario.Nombre </h1>
+        <p class="text-center"> <strong>(@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre)</strong> </p>
+        <p>Saludos doctor, este es tu menú de opciones</p>
+    </div>
+}
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Secretaria")
+{
+    <div class="text-center">
+        <h1 class="display-4">Bienvenido/a @MediPlus.LocalData.LocalData.Usuario.Nombre </h1>
+        <p class="text-center"> <strong>(@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre) del doctor (@MediPlus.LocalData.LocalData.Usuario.Doctor.Nombre)</strong> </p>
+        <p>Saludos secretaria, este es tu menú de opciones</p>
+    </div>
+}
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Administrador")
+{
+    <div class="text-center">
+        <h1 class="display-4">Bienvenido/a @MediPlus.LocalData.LocalData.Usuario.Nombre </h1>
+        <p>Saludos administrador, este es tu menú de opciones para administrar MediPlus</p>
+    </div>
+}
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Paciente")
+{
+    <div class="text-center">
+        <h1 class="display-4">Bienvenido/a @MediPlus.LocalData.LocalData.Usuario.Nombre </h1>
+        <p>Saludos estimado/a paciente, este es tu menú de opciones</p>
+    </div>
+}
+
+<hr />
+
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Paciente")
+{
+
+
+<div class="row mt-3">
+
+    <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-envelope fa-4x text-dark"></i>
+        </div>
+        <a asp-action="MisCitas" asp-controller="Citas" class="text-dark"><strong>Mi Historial de Citas</strong></a>
+    </div>
+
+    <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-calendar fa-4x text-warning"></i>
+        </div>
+        <a asp-action="MisCitasHoy" asp-controller="Citas" class="text-dark"><strong>Citas Para Hoy</strong></a>
+    </div>
+
+</div>
+
+}
+
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Medico")
+{
+
+
+    <div class="row mt-3">
+
+        <div class="col-sm-4 mt-3  rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-user fa-4x text-success"></i>
+            </div>
+            <a asp-action="PacientesDoctor" asp-controller="Pacientes" class="text-dark"><strong>Mis Pacientes</strong></a>
+        </div>
+
+        <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-envelope fa-4x text-warning"></i>
+            </div>
+            <a asp-action="Create" asp-controller="Citas" class="text-dark"><strong>Agendar Citas</strong></a>
+        </div>
+
+        <div class="col-sm-4 mt-3  rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-calendar fa-4x text-primary"></i>
+            </div>
+            <a asp-action="CitasHoy" asp-controller="Citas" class="text-dark"><strong>Citas Para Hoy</strong></a>
+
+        </div>
+
+
+        <div class="col-sm-4 mt-3  rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-female fa-4x text-secondary"></i>
+            </div>
+            <a asp-action="MiSecretaria" asp-controller="Medicos" class="text-dark"><strong>Mi Secretaria</strong></a>
+        </div>
+
+    </div>
+
+}
+
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Administrador")
+{
+
+
+<div class="row mt-3">
+
+    <div class="col-sm-4 mt-3  rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-user-plus fa-4x text-dark"></i>
+        </div>
+        <a asp-action="Index" asp-controller="Pacientes" class="text-dark"><strong>Pacientes</strong></a>
+    </div>
+
+    <div class="col-sm-4 mt-3  rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-user-md fa-4x text-dark"></i>
+        </div>
+        <a asp-action="Index" asp-controller="Medicos" class="text-dark"><strong>Medicos</strong></a>
+    </div>
+
+    <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-calendar fa-4x text-dark"></i>
+        </div>
+        <a asp-action="Index" asp-controller="Citas" class="text-dark"><strong>Citas</strong></a>
+    </div>
+
+    <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-cogs fa-4x text-dark"></i>
+        </div>
+        <a asp-action="Index" asp-controller="Especialidades" class="text-dark"><strong>Especialidades</strong></a>
+    </div>
+
+
+    <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-user-plus fa-4x text-dark"></i>
+        </div>
+        <a asp-action="Index" asp-controller="Usuarios" class="text-dark"><strong>Usuarios</strong></a>
+    </div>
+
+    <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-id-card fa-4x text-dark"></i>
+        </div>
+        <a asp-action="Index" asp-controller="Roles" class="text-dark"><strong>Roles</strong></a>
+    </div>
+
+    <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+        <div class="text-center">
+            <i class="fa fa-male fa-4x text-dark"></i>
+        </div>
+        <a asp-action="Index" asp-controller="Secretariums" class="text-dark"><strong>Secretarias</strong></a>
+    </div>
+
+
+
+</div>
+
+}
+
+
+@if (@MediPlus.LocalData.LocalData.Usuario.Rol.Nombre == "Secretaria")
+{
+
+
+    <div class="row mt-3">
+
+        <div class="col-sm-4 mt-3  rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-user fa-4x text-primary"></i>
+            </div>
+            <a asp-action="Create" asp-controller="Pacientes" class="text-dark"><strong>Registrar Pacientes</strong></a>
+        </div>
+
+        <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-calendar fa-4x text-success"></i>
+            </div>
+            <a asp-action="Create" asp-controller="Citas" class="text-dark"><strong>Agendar Citas</strong></a>
+        </div>
+
+        <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-envelope fa-4x text-warning"></i>
+            </div>
+            <a asp-action="Index" asp-controller="Citas" class="text-dark"><strong>Administrar Citas de Doctor (@MediPlus.LocalData.LocalData.Usuario.Doctor.Nombre)</strong></a>
+        </div>
+
+        <div class="col-sm-4 mt-3 rounded pb-3  text-center shadow-sm">
+            <div class="text-center">
+                <i class="fa fa-user-plus fa-4x text-secondary"></i>
+            </div>
+            <a asp-action="Create" asp-controller="Usuarios" class="text-dark"><strong>Crear Usuario a Pacientes</strong></a>
+        </div>
+
+
+
+    </div>
+
+}
+
